@@ -11,16 +11,14 @@ async function fetchAllPuns() {
 
             punsListHTML += `
                 <tr data-id="${pun._id}">
-                    <td class="editable" contenteditable="true">${pun.title}</td>
+                    <h2 class="editable" contenteditable="true">${pun.title}</h2>
 
-                    <td>${pun.author}</td>
-                    <td>${pun.content}</td>
-                    <td>${pun.tags}</td>
-                    <td>${punDate.toLocaleDateString()}</td>
-                    <td>
-                        <button class="update-btn">Update</button> |
-                        <button class="delete-btn" data-id="${pun._id}">Delete</button>
-                    </td>
+                    <p>${pun.author} ${punDate.toLocaleDateString()}<p>
+                    
+                     <p>${pun.tags}</p>
+                    <p>${pun.content}</p>
+                    <a href="post.html">Read more</a>
+
                 </tr>
             `;
         }
@@ -28,25 +26,18 @@ async function fetchAllPuns() {
 
        /* This fetches the delete button and then adds an event listener to the 
          delete button to make it functional */
-        let deleteBtns = document.querySelectorAll('.delete-btn');
-        for (let btn of deleteBtns) {
-            btn.addEventListener('click', async function (e) {
-                e.preventDefault();
-                const punIdToDelete = e.target.dataset.id;
-                await deletePun(punIdToDelete);
-            });
+   {
+            {
+         
+            };
         }
 
         /* This fetches the update button and then adds an event listener to the 
          update button to make it functional */
-        let updateBtns = document.querySelectorAll('.update-btn');
-        for (let btn of updateBtns) {
-            btn.addEventListener('click', async function (e) {
-                e.preventDefault();
-                const punIdToUpdate = e.target.closest('tr').dataset.id;
-                const newFirstName = e.target.closest('tr').querySelector('.editable').textContent;
-                await updatePun(punIdToUpdate, { title: newFirstName });
-            });
+        {
+         {
+                
+         };
         }
     } catch (error) {
         console.log(error);
