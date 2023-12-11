@@ -8,7 +8,7 @@ async function fetchAllPuns() {
         let punsListHTML = "";
         for (let pun of puns) {
             let punDate = new Date(pun.date);
-            // Time to fix the read more links
+
             punsListHTML += `
                 <tr data-id="${pun._id}">
                     <h2 class="editable" contenteditable="true">${pun.title}</h2>
@@ -17,6 +17,7 @@ async function fetchAllPuns() {
                     
                      <p>${pun.tags}</p>
                     <p>${pun.content}</p>
+                    <p>${pun.content.slice(0, 100)}</p>
                     <a href="post.html">Read more</a>
 
                 </tr>
