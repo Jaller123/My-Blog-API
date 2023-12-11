@@ -9,6 +9,7 @@ async function fetchAllPuns() {
         for (let pun of puns) {
             let punDate = new Date(pun.date);
 
+
             punsListHTML += `
                 <tr data-id="${pun._id}">
                     <h2 class="editable" contenteditable="true">${pun.title}</h2>
@@ -16,8 +17,7 @@ async function fetchAllPuns() {
                     <p>${pun.author} ${punDate.toLocaleDateString()}<p>
                     
                      <p>${pun.tags}</p>
-                    <p>${pun.content}</p>
-                    <p>${pun.content.slice(0, 100)}</p>
+                     <p>${pun.content.slice(0, 100)}</p> 
                     <a href="post.html">Read more</a>
 
                 </tr>
