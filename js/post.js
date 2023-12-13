@@ -1,27 +1,31 @@
-async function fetchPostDetails(id) {
+
+    //Looks for the "id" parameter in the URL.
     const urlParams = new URLSearchParams(window.location.search);
     const punId = urlParams.get('id');
 
-    console.log('punId:', punId);
-
-    if (punId) {
-        try {
+    //Returns if the "id" is found
+    fetchPostDetails(punId);
+    
+    async function fetchPostDetails(id) 
+    {
+        try 
+        {
             const response = await fetch(`https://blog-api-assignment.up.railway.app/posts/${id}`);
-            const pun = await response.json();
+            const post = await response.json();
+            console.log(post)
+        
 
-            console.log('Fetched post details:', pun);
-
-            // Fyll innehållet i HTML
+            // Fill up the content in the HTML
             document.getElementById('post-content').innerHTML = `
-                <h2>${pun.title}</h2>
-                <p>${pun.author} ${new Date(pun.date).toLocaleDateString()}</p>
-                <p>${pun.tags}</p>
-                <p>${pun.content}</p>
+                <h2>${post.title}</h2>
+                <p>${post.author} ${new Date(post.date).toLocaleDateString()}</p>
+                <p>${post.tags}</p>
+                <p>${post.content}</p>
             `;
-        } catch (error) {
-            console.error('Error fetching post details:', error);
-        }
-    } else {
-        console.error('Pun ID is missing in the URL.');
+        } 
+
+        catch (error) 
+            {
+                console.error('Error fetching post details:', error);
+            }
     }
-}
