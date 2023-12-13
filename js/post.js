@@ -1,10 +1,10 @@
 
-    //Looks for the "id" parameter in the URL.
+    //Looks for the "id" parameter in the URL. Afterwards it stores it in the "postId" variable
     const urlParams = new URLSearchParams(window.location.search);
-    const punId = urlParams.get('id');
+    const postId = urlParams.get('id');
 
     //Returns if the "id" is found
-    fetchPostDetails(punId);
+    fetchPostDetails(postId);
     
     async function fetchPostDetails(id) 
     {
