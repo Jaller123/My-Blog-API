@@ -1,32 +1,31 @@
-fetchAllPuns();
-
-async function fetchAllPuns() {
+async function fetchAllPosts() {
     try {
         const response = await fetch('https://blog-api-assignment.up.railway.app/posts');
-        const puns = await response.json();
+        const posts = await response.json(); 
 
-        //Loops through all the data
-        let punsListHTML = "";
-        for (let pun of puns) {
-            let punDate = new Date(pun.date);
-            //Applies the data in the HTML
-            punsListHTML += `
-                <tr data-id="${pun._id}">
-                    <h2 class="editable" contenteditable="true">${pun.title}</h2>
-
-                    <p>${pun.author} ${punDate.toLocaleDateString()}</p>
-                    
-                    <td><p>${pun.tags}</p></td>
-                    <p>${pun.content.slice(0, 100)}</p>
-                    <a href="post.html?id=${pun._id}">Read more</a>
+        // Loops through all the data
+        let postsListHTML = "";
+        for (let post of posts) {
+            let postDate = new Date(post.date);
+            // Applies the data in the HTML
+            postsListHTML += `
+                <tr data-id="${post._id}">
+                    <h2 class="editable" contenteditable="true">${post.title}</h2>
+                    <p>${post.author} ${postDate.toLocaleDateString()}</p>
+                    <p>${post.tags}</p>
+                    <p>${post.content.slice(0, 100)}</p>
+                    <a href="post.html?id=${post._id}">Read more</a>
                 </tr>
             `;
-            //Slice limits the cahracters to 100 only.
-            /*the link href to ${pun._id} refers to sending data from this
-            page to the post.js*/
+            // Slice limits the characters to 100 only.
+            /* The link href to ${post._id} refers to sending data from this
+            page to the post.js */
         }
-        document.getElementById('pun-list-body').innerHTML = punsListHTML;
+        document.getElementById('pun-list-body').innerHTML = postsListHTML;
     } catch (error) {
         console.error('Error fetching puns:', error);
     }
 }
+
+// Call the function
+fetchAllPosts();
